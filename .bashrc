@@ -43,7 +43,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -56,10 +56,13 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+PROMPT_DIRTRIM=1
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\w$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -85,7 +88,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -115,6 +118,20 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+#enable ctrl+p as copy current line shortcut, middle mouse as paste
+#bind '"\C-p": "\C-e\C-u xsel <<"EOF"\n\C-y\nEOF\n\C-y"'
+
+#enable arrow up/down for partial search
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
+#cycle through tab completion
+[[ $- = *i* ]] && bind '"TAB": menu-complete'
+[[ $- = *i* ]] && bind '"\e[Z":menu-complete-backward'
+
+# display one column with tab completion matches
+set completion-display-width 1
 
 conda activate py36
 
