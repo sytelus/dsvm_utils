@@ -38,6 +38,7 @@ install_from_git microsoft tensorwatch
 install_from_git sytelus podworld
 install_from_git sytelus regim
 install_from_git hill-a stable-baselines
+install_from_git sytelus rl-baselines-zoo
 
 popd
 
