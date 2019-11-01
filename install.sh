@@ -1,4 +1,4 @@
-pip install --upgrade pip
+#pip install --upgrade pip
 
 pip install -q gym
 pip install -q gym[box2d]
