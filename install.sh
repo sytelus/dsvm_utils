@@ -1,3 +1,7 @@
+#!/bin/bash
+#fail if any errors
+set -e
+set -o xtrace
 #pip install --upgrade pip
 
 pip install -q gym
