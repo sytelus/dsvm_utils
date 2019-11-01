@@ -20,19 +20,20 @@ pip install -q stable-baselines[mpi] box2d box2d-kengz pyyaml pybullet optuna py
 
 mkdir -p ~/GitHubSrc
 pushd ~/GitHubSrc
+
 function install_from_git {
-	if [ ! -d "~/GitHubSrc/$1" ]; then
-		git clone https://github.com/$1.git
-		cd "$1"
+	if [ ! -d "~/GitHubSrc/$2" ]; then
+		git clone https://github.com/$1/$2.git
+		cd "$2"
 		pip install -e .
 		cd ..	
 	fi
 }
 
-install_from_git microsoft/tensorwatch
-install_from_git sytelus/podworld
-install_from_git sytelus/regim
-install_from_git hill-a/stable-baselines
+install_from_git microsoft tensorwatch
+install_from_git sytelus podworld
+install_from_git sytelus regim
+install_from_git hill-a stable-baselines
 
 popd
 
