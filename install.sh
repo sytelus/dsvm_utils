@@ -44,4 +44,7 @@ popd
 
 cp -f .bashrc ~/.bashrc
 cp -f .bash_aliases ~/.bash_aliases
+cp -f .inputrc ~/.inputrc
+
 #echo "set background=dark" >> .vimrc
+
