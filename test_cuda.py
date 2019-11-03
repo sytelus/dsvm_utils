@@ -14,7 +14,7 @@ print(device_lib.list_local_devices())
 import tensorflow as tf
 hello = tf.constant("hello TensorFlow!")
 sess=tf.Session() 
-sess.run(hello
+sess.run(hello)
 
 # find PyTorch packages
 import pkg_resources
